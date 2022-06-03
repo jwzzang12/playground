@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UP&DOWN</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Radio+Canada:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header id="header">
+      <h1><strong>UP&DOWN</strong></h1>
+    </header>
+    <div class="upDown">
+      <div class="resetBtn">
+        <a href=""><span class="material-icons"> autorenew </span></a>
+      </div>
+      <input id="num" type="number" max="100" min="0" placeholder="1부터 100사이의 생각한 숫자를 입력하세요." />
+      <button onClick="onClick()">CLICK</button>
+      <div id="result">?</div>
+      <p>Clicks: <a id="clicks">0</a></p>
+    </div>
+    <script>
+      const comNum = Math.floor(Math.random() * 99) + 1;
+      const num = document.querySelector("#num");
+      const btn = document.querySelector(".upDown button");
+      btn.addEventListener("click", function () {
+        // if(isNaN(kor.value));
+        const tempNum = parseInt(num.value);
+        let answer = "";
+        if (comNum == tempNum) {
+          answer = tempNum + "CORRECT";
+        } else if (comNum > tempNum) {
+          answer = "UP";
+        } else if (comNum < tempNum) {
+          answer = "DOWN";
+        }
+        result.textContent = `${answer}`;
+      });
+
+      let clicks = 0;
+
+      function onClick() {
+        clicks += 1;
+        document.querySelector("#clicks").innerHTML = clicks;
+      }
+    </script>
+  </body>
+</html>
